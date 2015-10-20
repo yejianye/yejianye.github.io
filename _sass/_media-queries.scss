@@ -1,3 +1,10 @@
+@media screen and (max-width: $viewport-small) {
+  h1,
+  .h1 {
+    font-size: 1.5rem;
+  }
+}
+
 @media screen and (min-width: $viewport-small) {
   html {
     font-size: 16px;
@@ -5,7 +12,7 @@
 
   h1,
   .h1 {
-    font-size: $h1;
+    font-size: 2rem;
   }
 
   .site-header {
