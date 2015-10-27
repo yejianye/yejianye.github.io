@@ -20,7 +20,7 @@ title:  "聊聊为什么我转投了Emacs"
 
 而在我看来，有着强大可扩展性的文本编缉器，有成为这种平台的潜质。无论是Vim, Emacs, Sublime或是Atom，都有一些功能强大让人惊叹的插件。你完全可以把这些编缉器看成是一个操作系统，而那些插件则是其上的杀手级应用。
 
-绕了那么大一个圈子，让我回到原点，为什么我会转Emacs？因为在我所熟知的所有编缉器中，只有两个从一开始就想要成为一个平台，而不是单纯的编缉器，那就是Emacs和Atom。在编缉器圣战中，Vimer经常挂在口中的一句话就是"The Emacs operating system needs a better editor."，讽刺的背后也道出了Emacs的理念，而正因为Emacs是一个操作系统，如今Emacs上的Evil插件几乎完全复制了Vim的核心功能，换句话说，Vim成了Emacs系统上的一款应用。Richard Stallman在编写Emacs时，先用20%的C代码创造了Emacs Lisp语言，剩下的80% Elisp创造了整个编辑器。在之后的30年里，Elisp也被用于开发各种Emacs上的插件。也就是说Emacs的插件开发者与编缉器的创造者使用的是同样的工具，所以它的扩展性才那么被人称道。虽然有人说[Elisp是门糟糕的语言](http://emacswiki.org/emacs/WhyDoesElispSuck)，但Emacs那超越所有同时代软件（以及绝大部分现代软件）的思想让我不得不钦佩。当然，Emacs满足我之前所提到的对于平台的所有要求，包括图形显示，通过不多的几行代码，我就实现了直接把屏幕截图Cmd+V到Emacs中，并inline显示。
+绕了那么大一个圈子，让我回到原点，为什么我会转Emacs？因为在我所熟知的所有编缉器中，只有两个从一开始就想要成为一个平台，而不是单纯的编缉器，那就是Emacs和Atom。在编缉器圣战中，Vimer经常挂在口中的一句话就是"The Emacs operating system needs a better editor."，讽刺的背后也道出了Emacs的理念，而正因为Emacs是一个操作系统，如今Emacs上的Evil插件几乎完全复制了Vim的核心功能，换句话说，Vim成了Emacs系统上的一款应用。Richard Stallman在编写Emacs时，先用20%的C代码创造了Emacs Lisp语言，剩下的80% Elisp创造了整个编辑器。在之后的30年里，Elisp也被用于开发各种Emacs上的插件。也就是说Emacs的插件开发者与编缉器的创造者使用的是同样的工具，所以它的扩展性才那么被人称道。虽然Elisp在Lisp dialect中评价不高，但Emacs那超越所有同时代软件（以及绝大部分现代软件）的思想让我不得不钦佩。当然，Emacs满足我之前所提到的对于平台的所有要求，包括图形显示，通过不多的几行代码，我就实现了直接把屏幕截图Cmd+V到Emacs中，并inline显示。
 
 最后提一下Atom，它是另一个有着平台野心的编缉器，Github团队在编写Atom时创造了Electron，这是一个让开发者用web技术来搭建跨平台桌面应用的框架，比如现在大红大紫的Slack就是它开发的。从目前Atom的官方博客来看，Atom团队正在不留余力地推广Electron。我个人没有选择Atom的原因有以下几点
 
