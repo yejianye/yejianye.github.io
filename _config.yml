@@ -1,7 +1,7 @@
 # Site settings
 title:       叶剑烨的个人注释
-email:       your_email@example.com
-author:      John Otander
+email:       yejianye@gmail.com
+author:      叶剑烨
 description: "停顿十秒钟，思考沉淀"
 baseurl:     ""
 url:         "http://yejianye.com"
@@ -10,6 +10,9 @@ date_format: "%b %-d, %Y"
 # Google services
 google_analytics:
 google_verification:
+
+# Baidu Analytics
+baidu_analytics: a328f152ad53a33a042999efdd3de235
 
 # Optional features
 animated:             false
