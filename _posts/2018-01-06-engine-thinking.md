@@ -18,11 +18,11 @@ title:  "程序员的核心能力 - 引擎式思维"
 ```python
 def precommit():
     files = get_commit_files()
-    for filename in files:
-        if filename.endswith('.py'):
-            run_pylint(filename)
-        elif filename.endswith('.js'):
-            run_jslint(filename)
+    for fname in files:
+        if fname.endswith('.py'):
+            pylint(fname)
+        elif fname.endswith('.js'):
+            jslint(fname)
 ```
 
 过了两天，你团队的代码质量又进步了，对所有的Python模块加上了单元测试，这时就要求所有Python文件在commit时还需要跑对应的单元测试，如果单元测试不通过，就让commit失败。所以你改了一下precommit脚本
@@ -30,13 +30,13 @@ def precommit():
 ```python
 def precommit():
     files = get_commit_files()
-    for filename in files:
-        if filename.endswith('.py'):
-            if run_py_unittest(filename) == 'failed': 
-               raise CommitError('Unittest failed!')
-            run_pylint(filename)
-        elif filename.endswith('.js'):
-            run_jslint(filename)
+    for fname in files:
+        if fname.endswith('.py'):
+            if py_unittest(fname) == 'failed': 
+               sys.exit(1)
+            pylint(fname)
+        elif fname.endswith('.js'):
+            jslint(fname)
 ```
 
 虽然比之前稍丑了一些，但可读性还是可以的。大家在尝到了precommit脚本的甜头之后，更加变本加厉，各种需求接踵而来
@@ -45,7 +45,7 @@ def precommit():
 3. “data.py是数据文件，不需要运行单元测试”
 4. “我们另一个git repo也想用你的precommit脚本，但要把Python的单元测试先禁掉”
 
-1), 2)都是小意思，加上就行了。3)让你有点为难，precommit函数已经有点长了，要不这个判断写在`run_py_unittest`里吧。到了4)，你忍不住顶了回去“我没空写，copy一份自己去改吧！”
+1), 2)都是小意思，加上就行了。3)让你有点为难，precommit函数已经有点长了，要不这个判断写在`py_unittest`里吧。到了4)，你忍不住顶了回去“我没空写，copy一份自己去改吧！”
 
 这时你开始意识到这样下去不是办法，但别人的这些需求又很琐碎，让你没办法很好地组织代码。如果要系统化地解决这些问题，该怎么做呢？你发现所有的需求都可以抽象成同一个套路
 
@@ -66,14 +66,14 @@ rules = [
     {
         'id': 'pylint',
         'include': ['*.py'],
-        'func': run_pylint,
+        'func': pylint,
         'warning_only': True
     },
     {
         'id': 'py-unittest',
         'include': ['*.py'],
         'exclude': ['data.py'],
-        'func': run_py_unittest
+        'func': py_unittest
     },
     ...
 ]
