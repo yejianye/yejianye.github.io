@@ -11,7 +11,8 @@ date_format: "%b %-d, %Y"
 google_analytics:
 google_verification:
 
-# Baidu Analytics
+# Baidu
+baidu_verification: bOzpMmOb88
 baidu_analytics: a328f152ad53a33a042999efdd3de235
 
 # Optional features
