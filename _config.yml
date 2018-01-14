@@ -4,7 +4,7 @@ email:       yejianye@gmail.com
 author:      叶剑烨
 description: "停顿十秒钟，思考沉淀"
 baseurl:     ""
-url:         "http://yejianye.com"
+url:         "http://www.yejianye.com"
 date_format: "%b %-d, %Y"
 
 # Google services
@@ -65,4 +65,6 @@ permalink:    pretty
 paginate:     4
 sass:
   compressed: true
-plugins: [jekyll-paginate]
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
