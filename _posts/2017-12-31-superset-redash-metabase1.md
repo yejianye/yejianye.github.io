@@ -65,7 +65,7 @@ Redash的Dashboard可以通过命名来进行分组，Dashboard的名字可以�
 
 Metabase
 --------
-![Metabase Demo](/images/metabase-demo.png)
+![Metabase Demo](/images/metabase-demo.gif)
 
 由于我并没有在生产环境下使用过Metabase，只在自己本本上试用过这个工具。所以我只能说一下对它的第一印象。
 
