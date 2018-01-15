@@ -18,7 +18,7 @@ baidu_analytics: a328f152ad53a33a042999efdd3de235
 # Optional features
 animated:             false
 show_related_posts:   false
-show_post_footers:    false
+show_post_footers:    true
 show_social_icons:    false
 ajaxify_contact_form: false
 
@@ -41,11 +41,11 @@ flattr_button:
 
 # Post sharing icons
 show_sharing_icons: false
-share_text: 'Share this post!'
+share_text: '分享到'
 # Change to 'true' to enable individual icons
-share_facebook: false
-share_twitter: false
-share_googleplus: false
+share_facebook: true
+share_twitter: true
+share_googleplus: true
 share_linkedin: false
 share_digg: false
 share_tumblr: false
