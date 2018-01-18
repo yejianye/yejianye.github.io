@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>程序员的核心能力 - 构建快速反馈 &#8211; 叶剑烨的个人注释</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="停顿十秒钟，思考沉淀">
+    <meta name="author" content="叶剑烨">
+    <meta name="keywords" content="">
+    <link rel="canonical" href="http://localhost:4000/2018/01/10/feedback-loop/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for 叶剑烨的个人注释" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?201801181822" type="text/css">
+
+    <!-- Fonts -->
+    
+      <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    
+
+    <!-- Verifications -->
+    
+
+    
+      <meta name="baidu-site-verification" content="bOzpMmOb88" />
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="程序员的核心能力 - 构建快速反馈">
+    <meta property="og:description" content="停顿十秒钟，思考沉淀">
+    <meta property="og:url" content="http://localhost:4000/2018/01/10/feedback-loop/">
+    <meta property="og:site_name" content="叶剑烨的个人注释">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+    <meta name="twitter:title" content="程序员的核心能力 - 构建快速反馈" />
+    <meta name="twitter:description" content="停顿十秒钟，思考沉淀" />
+    <meta name="twitter:url" content="http://localhost:4000/2018/01/10/feedback-loop/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?a328f152ad53a33a042999efdd3de235";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</head>
+
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://localhost:4000" class="site-title">叶剑烨的个人注释</a>
+      <nav class="site-nav">
+        <a href="/">文章</a>
+<a href="/about/">关于我</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>程序员的核心能力 - 构建快速反馈</h1>
+  <span class="post-meta">Jan 10, 2018</span><br>
+  
+  <span class="post-meta small">
+      
+      阅读时间 7 分钟
+      
+  </span>
+</div>
+
+<article class="post-content">
+  <p>程序员的大部分时间都处在“运行代码，出错，修改代码”这样一个循环中，它被称为“反馈循环（Feedback Loop）”。反馈循环转得越快，单位时间里你可以迭代的次数就越多，你的编程效率也就提高了，这是一个很简单的道理。所以在做任何项目的时候，在你埋头到具体问题的调试之前，你首先要优化反馈循环的时间。</p>
+
+<p>那反馈循环的时间都花在哪儿了呢？</p>
+
+<p>也许你是一个移动应用工程师，为了验证一个 API，你每次都要在应用里提交一个复杂的表单，你的时间浪费在了重复填写表单上。也许你是一个数据工程师，你正在调试的一个数据查询时需要读取海量的数据，每次运行都至少要几分钟的时间。也许你在做的项目代码庞大依赖众多，每次的编译都要花上十来分钟。</p>
+
+<p>一个慢的反馈循环不但使你的时间浪费在等待中，让你心情不佳，也会打断你的思路，所以你实际上的效率损失很可能远大于表面上浪费的时间。写了这么多年程序，对于加快调试时的反馈时间，有些心得可以与大家分享。</p>
+
+<h2 id="repl">REPL</h2>
+<p>许多解释型语言，像是 Python, Ruby, Node 都有 REPL 环境（Read-Eval-Print-Loop），你可以在里面输入一些语句，立即就可以看到结果，这就是一个快速的反馈循环。目前主流的代码编缉器都有插件与这些 REPL 整合，在写代码的时候可以一边在主文件里写，一边让代码在 REPL 中执行，从而即时地检验代码的正确性。</p>
+
+<p>程序员在写代码的时候，头脑里会不断产生各种疑问，“这个正则表达式能匹配这个字符串吗？”，“这个函数调用的参数写对了没有？”，这些疑问不管对错，在它们被证实之前都会对头脑产生额外负担。在你写下一句代码的时候，头脑还是会忍不住思考上一句的正确性。REPL 能快速回答你头脑里的这些疑问，从而提升了你的思考效率。</p>
+
+<p>我当初学 C/C++/Java 这些编译型语言的时候，它们是没有 REPL 工具的，我也一度认为 REPL 是解释型语言的专利。但现在我发现 Swift, Kotlin 这些现代的编译型语言都原生提供了 REPL。而像 Go, Rust 等也都有第三方实现的 REPL，除此之外还有它们官网上的 Playground。所以现今无论你用哪种语言，几乎都能找到可用的 REPL 工具，赶紧用起来吧！</p>
+
+<h2 id="mock">Mock</h2>
+<p>有时你调试的功能依赖一个很慢的外部输入，这可能是一个远程的第三方API（尤其是国外的API），也可能是需要在界面上做人工输入，或是查询一个庞大的数据库表。这导致你调试的大部分时间都是在等待中渡过。解决这个问题的一个方法就是用 Mock 输入来代替真实输入。对一个远程的 REST API，你可以通过直接返回一个本地的 JSON 对象来代替。对人工界面输入，你可以在测试时让系统预填好所有的表单。对于庞大的数据库表的操作，你可以在本地创建一个相同结构的表，只取原本数据表中的少量数据复制到本地。这些设置在初期可能会花掉你一部分时间，但很快就能从调试过程中省回来。</p>
+
+<p>许多编程语言还提供了好用的 Mock 类库，以 Python 为例</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">patch</span>
+
+<span class="nd">@patch</span><span class="p">(</span><span class="s">'module_name.expensive_api'</span><span class="p">,</span> <span class="n">mock_api</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">awesome_func</span><span class="p">():</span>
+    <span class="n">expensive_api</span><span class="p">()</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+<p>在上面这段代码中，<code class="highlighter-rouge">expensive_api</code> 在 <code class="highlighter-rouge">awesome_func</code> 中会自动被替换为 <code class="highlighter-rouge">mock_api</code>，在 <code class="highlighter-rouge">awesome_func</code> 之外则保侍不变。<code class="highlighter-rouge">patch</code> 方法不但让替换逻辑清晰，而且让替换只作用于要调试函数。</p>
+
+<h2 id="cache">Cache</h2>
+<p>与 Mock 输入类似，Cache 是解决外部依赖执行速度慢的另一种方法。因为构建 Mock 也会引入一些意想不到的问题，比如 Mock 的结果与真实情况可能有差异，所以把费时的外部依赖函数的结果 Cache 起来也是个很不错的方法，但前提是这些依赖函数是“纯函数”。换句话说，就是这些函数的执行结果只取决于函数的参数，与任何全局状态无关，并且在函数执行后，除了返回数据外，没有任何副作用。顺便提一句，尽量把大部分函数写成纯函数也是一个重要的编程能力。</p>
+
+<p>这里的 Cache 不能用 in-memory cache，不然每次改代码重新运行的时候，Cache 就失效了。在调试时，File Cache 是很常用方法，也就是把函数执行的结果序列化后存在文件里，下次可以直接从文件里读。</p>
+
+<p>写函数 Cache 的时候时，不要把 Cache 的逻辑直接写在函数里。以Python为例，我不推荐以下的写法</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">slow_api</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">cache_file</span> <span class="o">=</span> <span class="s">'{}_{}.json'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">cache_file</span><span class="p">):</span>
+        <span class="c"># 在这里执行函数原有逻辑</span>
+        <span class="c"># 将最后结果存入result变量</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">cache_file</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">writer</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">cache_file</span><span class="p">))</span>
+</code></pre></div>
+
+<p>这有两大缺点。第一，这段 Cache 的逻辑你需要在每个要用的地方都写一遍。第二，这段 Cache 的逻辑入侵了函数内部逻辑，不但清理起来麻烦，也容易不小心破坏原有逻辑。</p>
+
+<p>好的 Cache 实现要用到高阶函数。普通函数用来变换数据，高阶函数则用来变换其他函数。这个对初学者来说，可能有点难。但在主流语言中，大部分的通用类库大牛们都已经为大家实现了，所以只要会用就行了。比如 beaker 就是 Python 中处理 Cache 的第三方库，也支持用文件做为 Cache 的存储媒介。以下是使用 beaker 的代码示例</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">beaker.cache</span> <span class="kn">import</span> <span class="n">CacheManager</span> 
+<span class="kn">from</span> <span class="nn">beaker.util</span> <span class="kn">import</span> <span class="n">parse_cache_config_options</span>
+
+<span class="n">cache_opts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'cache.type'</span><span class="p">:</span> <span class="s">'file'</span><span class="p">,</span>
+    <span class="s">'cache.data_dir'</span><span class="p">:</span> <span class="s">'/tmp/cache/data'</span><span class="p">,</span>
+    <span class="s">'cache.lock_dir'</span><span class="p">:</span> <span class="s">'/tmp/cache/lock'</span>
+<span class="p">}</span>
+<span class="n">cache</span> <span class="o">=</span> <span class="n">CacheManager</span><span class="p">(</span><span class="o">**</span><span class="n">parse_cache_config_options</span><span class="p">(</span><span class="n">cache_opts</span><span class="p">))</span>
+
+<span class="nd">@cache.cache</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">slow_api</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div>
+<p>可以看到，在 CacheManager 对象初始化之后，对任何要加 Cache 的函数，只需要在它前面加上 <code class="highlighter-rouge">@cache.cache()</code> 就可以了，用起来很方便，也完全没有入侵性。</p>
+
+<h2 id="日志记录">日志记录</h2>
+<p>在代码执行的一些关键点打印日志也是让反馈循环转得更快的好方法。对于执行时间长的函数，在中间节点打印日志可以在整个函数执行完之前，提前提供反馈。不过日志更重要的作用是在单次反馈中给到你更多有用的信息，从而减少解决问题所需的反馈循环的次数。</p>
+
+<p>注意这里推荐使用的是 Log 而不是 Print。虽然从功能上讲两者是类似的，但相比 Print，日志记录有太多的优点。首先，日志可以提供不同的级别。通过给开发环境与生产环境设置不同的日志级别，你完全可以把调试时的日志代码提交，不用担心它会拖慢生产环境。而 Print 语句在提交前是必须清理干净的。日志记录还可以自动加上有用的上下文信息，比如当前时间，当前执行的模块与函数等。上下文信息既可以是日志模块内置的，也可以是你自定义的，比如在 Web 系统中你可以加上当前用户的 ID 做为上下文的一部分。这些上下文信息可以很好地帮助你排查错误。</p>
+
+<h2 id="单元测试">单元测试</h2>
+<p>只要你调试的程序可以方便地写单元测试，那它就是构建快速反馈的最优方案，这也通常是我的第一选择。上面提到的很多方法与单元测试也是相辅相成的。比如 REPL 让你在写代码的过程中得到快速反馈，单元测试则可以在函数写完后提供整体检验。为了减少单元测试的外部依赖，或是为了让它运行得更快，Mock 方法在单元测试中经常用到。日志记录也可以帮助你在每次单元测试失败时看到更详尽的信息，让你更快速地定位错误原因。</p>
+
+<h2 id="开发与调试工具">开发与调试工具</h2>
+<p>最后一点也很重要，你要确保自己正在使用最好的开发与调试工具。好的构建工具可以加快你项目的编译速度，从而节省了反馈时间。有些工具则更进一步，例如顶顶大名的 React Hot Loader，它让对 React 代码的修改在页面上实时反应，而不需要重新加载页面，这样的工具大幅减少了反馈循环的时间。工欲善其事，必先利其器。千万不要小看工具的力量，工具的差异可能会造成效率上巨大的差距。以后会单独写文章聊聊如何打磨你的工具箱。</p>
+
+<h2 id="小结">小结</h2>
+<p>“快速反馈”是一个泛用性很广的概念，提升编程效率只是它的一个应用而已。</p>
+
+<p>几乎所有的电子游戏中都有一套高效的反馈机制，刷完任务立刻掉宝升级，甚至打怪的过程中也是各种数字乱飞，这一切都是对玩家的行为给予即时反馈。在体育训练时教练的重要性在于，他可以对你动作的正确性做出快速反馈。为什么很多公司喜欢把 KPI 实时地投到电视机上，并放在办公室最醒目的位置，就是把你每时每刻的工作“即时反馈”到公司的 KPI 上。即便这种即时性是一种幻觉，仍能激励员工。</p>
+
+<p>所以当你想要改善某件事的时候，先想一想如何建立一个快速反馈机制。比如你想提高代码单元测试的覆盖率，如果你只是把这个做为季度目标，那十有八九是完成不了的。但如果你每周都在例会上展示当前的单元测试覆盖率，那你达成目标的成功率就会大大提升。如果你建立一个git hook，在每次代码提交时都会显示当前的单元测试覆盖率，还显示与上次提交相比这个覆盖率变化了多少，那你百分之百会达成这个目标。这就是快速反馈的力量。</p>
+
+<p>在本文的最后，推荐一个视频，<a href="http://v.youku.com/v_show/id_XMzUyOTIyNzg0.html">Bred Victor - Inventing on Principle</a>，它把快速反馈的概念展示得淋漓尽致，到现在我仍能记得5年前看这个视频时的震撼。在我看过的所有的技术演讲里，它绝对排在前三。希望它也能对你的思想带来冲击与启发！</p>
+
+</article>
+
+
+
+
+  <div class="py2 post-footer">
+  <div class="wechat-caption">
+      关注我的微信公众号
+  </div>
+  <img src="/images/wechat-yecomment.jpg" alt="微信公众号" class="wechat" />
+
+  <div class="bdsharebuttonbox">
+      <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+      <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      <a href="#" class="fa fa-twitter bds_twitter" data-cmd="twi" title="分享到Twitter"></a>
+  </div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'yejianye';
+    var disqus_identifier = '/2018/01/10/feedback-loop';
+    var disqus_title      = '程序员的核心能力 - 构建快速反馈';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <p>停顿十秒钟，思考沉淀</p>
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

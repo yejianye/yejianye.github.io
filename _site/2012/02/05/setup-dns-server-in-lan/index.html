@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>轻松架设局域网内的DNS服务器 &#8211; 叶剑烨的个人注释</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="停顿十秒钟，思考沉淀">
+    <meta name="author" content="叶剑烨">
+    <meta name="keywords" content="">
+    <link rel="canonical" href="http://localhost:4000/2012/02/05/setup-dns-server-in-lan/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for 叶剑烨的个人注释" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?201801181822" type="text/css">
+
+    <!-- Fonts -->
+    
+      <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    
+
+    <!-- Verifications -->
+    
+
+    
+      <meta name="baidu-site-verification" content="bOzpMmOb88" />
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="轻松架设局域网内的DNS服务器">
+    <meta property="og:description" content="停顿十秒钟，思考沉淀">
+    <meta property="og:url" content="http://localhost:4000/2012/02/05/setup-dns-server-in-lan/">
+    <meta property="og:site_name" content="叶剑烨的个人注释">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+    <meta name="twitter:title" content="轻松架设局域网内的DNS服务器" />
+    <meta name="twitter:description" content="停顿十秒钟，思考沉淀" />
+    <meta name="twitter:url" content="http://localhost:4000/2012/02/05/setup-dns-server-in-lan/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?a328f152ad53a33a042999efdd3de235";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</head>
+
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://localhost:4000" class="site-title">叶剑烨的个人注释</a>
+      <nav class="site-nav">
+        <a href="/">文章</a>
+<a href="/about/">关于我</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>轻松架设局域网内的DNS服务器</h1>
+  <span class="post-meta">Feb 5, 2012</span><br>
+  
+  <span class="post-meta small">
+      
+      阅读时间 1 分钟
+      
+  </span>
+</div>
+
+<article class="post-content">
+  <p>Linux下架设DNS服务器（nameserver)的传统方案是使用bind，尽管功能强大，但配置起来相当麻烦。如果你只是需要非常基本的功能，那我推荐使用dnsmasq这个工具。它几乎不用任何配置就可以直接使用了。假设局域网内有若干台机器，你希望给每台机器一个hostname，并且能让它们可以通过域名(而不是IP地址)来相互访问。那么通过下面几步操作就可以完成了：</p>
+
+<h2 id="第一步--安装dnsmasq">第一步 – 安装dnsmasq</h2>
+
+<p>选择一台主机做你的nameserver，假设这台主机的IP是192.168.0.1。你可以在这里下载dnsmasq的源码并编译安装，如果你的linux distribution是ubuntu，可以通过apt-get直接安装</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install dnsmasq
+</code></pre></div>
+
+<h2 id="第二步--设置etchosts">第二步 – 设置/etc/hosts</h2>
+
+<p>在做为nameserver的主机上配置/etc/hosts文件，将局域网上每台机器的hostname和IP写入这个文件。一个IP允许有多个hostname。以下是一个范例，其中配置了4台机器的IP和hostname。</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>192.168.0.1 gateway
+192.168.0.2 stage0
+192.168.0.3 stage1
+192.168.0.4 playground
+</code></pre></div>
+
+<p>更发/etc/hosts后，我们需要重启dnsmasq服务，可以使用</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo /etc/init.d/dnsmasq restart
+</code></pre></div>
+
+<p>在ubuntu环境下推荐用</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo service dnsmasq restart
+</code></pre></div>
+
+<h2 id="第三步--添加nameserver">第三步 – 添加nameserver</h2>
+
+<p>注意，这一步配置对局域网中每台机器都需要操作。编缉/etc/resolv.conf文件，并在文件的最前面加上局域网的nameserver的IP地址</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>nameserver 192.168.0.1
+</code></pre></div>
+
+<p>到这里，如果一切正常的话，局域网中所有机器都可以用hostname来访问其他机器了。当有新的机器加入局域网时，只需在nameserver的/etc/hosts文件中新加一行并重启dnsmasq服务即可生效。</p>
+
+</article>
+
+
+
+
+  <div class="py2 post-footer">
+  <div class="wechat-caption">
+      关注我的微信公众号
+  </div>
+  <img src="/images/wechat-yecomment.jpg" alt="微信公众号" class="wechat" />
+
+  <div class="bdsharebuttonbox">
+      <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+      <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      <a href="#" class="fa fa-twitter bds_twitter" data-cmd="twi" title="分享到Twitter"></a>
+  </div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'yejianye';
+    var disqus_identifier = '/2012/02/05/setup-dns-server-in-lan';
+    var disqus_title      = '轻松架设局域网内的DNS服务器';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <p>停顿十秒钟，思考沉淀</p>
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

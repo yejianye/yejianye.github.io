@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SSH Forwarding &#8211; 叶剑烨的个人注释</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="停顿十秒钟，思考沉淀">
+    <meta name="author" content="叶剑烨">
+    <meta name="keywords" content="">
+    <link rel="canonical" href="http://localhost:4000/2009/09/13/ssh-forwarding/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for 叶剑烨的个人注释" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?201801181822" type="text/css">
+
+    <!-- Fonts -->
+    
+      <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    
+
+    <!-- Verifications -->
+    
+
+    
+      <meta name="baidu-site-verification" content="bOzpMmOb88" />
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="SSH Forwarding">
+    <meta property="og:description" content="停顿十秒钟，思考沉淀">
+    <meta property="og:url" content="http://localhost:4000/2009/09/13/ssh-forwarding/">
+    <meta property="og:site_name" content="叶剑烨的个人注释">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+    <meta name="twitter:title" content="SSH Forwarding" />
+    <meta name="twitter:description" content="停顿十秒钟，思考沉淀" />
+    <meta name="twitter:url" content="http://localhost:4000/2009/09/13/ssh-forwarding/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?a328f152ad53a33a042999efdd3de235";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</head>
+
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://localhost:4000" class="site-title">叶剑烨的个人注释</a>
+      <nav class="site-nav">
+        <a href="/">文章</a>
+<a href="/about/">关于我</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>SSH Forwarding</h1>
+  <span class="post-meta">Sep 13, 2009</span><br>
+  
+  <span class="post-meta small">
+      
+      阅读时间 1 分钟
+      
+  </span>
+</div>
+
+<article class="post-content">
+  <p>其实这实在是一个老得掉牙的技术了，但因为它实在太酷，所以忍不住在这里再介绍一下。</p>
+
+<p>从一个实际的问题出发，有一个MySQL的Server在远程的主机coolserver上。而我本地只能通过ssh来访问该主机，也就是用直接用mysql –host=coolserver是无法从本地直接访问那个database的。Ok，这样一来我只能很悲惨的用ssh连到coolserver，然后在server上用mysql的命令行来做数据库操作了（假设没有VNC或是X11 Forwarding）</p>
+
+<p>现在我们来用ssh forwarding，假设那个数据库的端口是4001，在本地执行下面这条命令</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ssh -L 4001:localhost:4001 coolserver
+</code></pre></div>
+
+<p>这时就有了一个本地4001端口到coolserver:4001的端口映射，这时在coolserver的MySQL Server就会如同运行在你本地机器上。</p>
+
+<p>在本地启动任何的MySQL GUI Client，例如我用Sequel，在Connection的host里键入127.0.0.1，端口设为4001，直接connect就OK了。</p>
+
+<p>再举个例子，有一个Perforce Server运行在远程的主机上，而你想把所有的文件都Sync到本地，用SSH Forwarding一样轻松完成，呵呵，具体步骤就不说了…</p>
+
+
+</article>
+
+
+
+
+  <div class="py2 post-footer">
+  <div class="wechat-caption">
+      关注我的微信公众号
+  </div>
+  <img src="/images/wechat-yecomment.jpg" alt="微信公众号" class="wechat" />
+
+  <div class="bdsharebuttonbox">
+      <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+      <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      <a href="#" class="fa fa-twitter bds_twitter" data-cmd="twi" title="分享到Twitter"></a>
+  </div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'yejianye';
+    var disqus_identifier = '/2009/09/13/ssh-forwarding';
+    var disqus_title      = 'SSH Forwarding';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <p>停顿十秒钟，思考沉淀</p>
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

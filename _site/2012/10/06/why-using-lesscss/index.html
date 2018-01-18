@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>为什么应该在Web开发中使用LessCSS &#8211; 叶剑烨的个人注释</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="停顿十秒钟，思考沉淀">
+    <meta name="author" content="叶剑烨">
+    <meta name="keywords" content="">
+    <link rel="canonical" href="http://localhost:4000/2012/10/06/why-using-lesscss/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for 叶剑烨的个人注释" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?201801181822" type="text/css">
+
+    <!-- Fonts -->
+    
+      <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    
+
+    <!-- Verifications -->
+    
+
+    
+      <meta name="baidu-site-verification" content="bOzpMmOb88" />
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="为什么应该在Web开发中使用LessCSS">
+    <meta property="og:description" content="停顿十秒钟，思考沉淀">
+    <meta property="og:url" content="http://localhost:4000/2012/10/06/why-using-lesscss/">
+    <meta property="og:site_name" content="叶剑烨的个人注释">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+    <meta name="twitter:title" content="为什么应该在Web开发中使用LessCSS" />
+    <meta name="twitter:description" content="停顿十秒钟，思考沉淀" />
+    <meta name="twitter:url" content="http://localhost:4000/2012/10/06/why-using-lesscss/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?a328f152ad53a33a042999efdd3de235";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</head>
+
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://localhost:4000" class="site-title">叶剑烨的个人注释</a>
+      <nav class="site-nav">
+        <a href="/">文章</a>
+<a href="/about/">关于我</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>为什么应该在Web开发中使用LessCSS</h1>
+  <span class="post-meta">Oct 6, 2012</span><br>
+  
+  <span class="post-meta small">
+      
+      阅读时间 5 分钟
+      
+  </span>
+</div>
+
+<article class="post-content">
+  <p>在如今的web开发领域，新技术日新月异，但也如大浪淘沙，只有少部分真正出色的变革能得以保留。LessCSS就是其中之一。</p>
+
+<p>任何新技术的引入都会带来一定的开销。以LessCSS为例，它使我的开发工具包中又多了一层依赖(lessc)，在开发测试循环中多了一步编译(less -&gt; css)，在调试过程中又多了一层抽象，并在我的脑袋里占了一块内存来记忆它的语法。所以虽然我会时常尝试一些新技术，但只有发现特别有价值的技术才会长久使用。至今为止我只用less开发过一个网站，但我非常确定在将来所有的web开发都会使用它，而不再用原生的CSS。less有两个主要的特性，一是嵌套式结构，二是mixin，它们解决了css语法上最根本的缺陷。</p>
+
+<p>先说嵌套式结构，html中的元素与css中的样式往往是一一对应的，但html的结构是嵌套式，从根结点到叶结点层层缩进，而css却是完全平铺的，它永远只有一层，样式间没有父子关系，也没有传统语言中的namespace或是scope概念。这使得html与css之间很难建立可读性良好的映射关系。less的嵌套式结构很优雅的解决了这一问题。以下是我的某个网站中导航条的html代码</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'nav-bar'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">'/'</span> <span class="na">class=</span><span class="s">'logo'</span><span class="nt">&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">'menu'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">'/shop'</span><span class="nt">&gt;</span>SHOP<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">'/about'</span><span class="nt">&gt;</span>ABOUT<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">'/faq'</span><span class="nt">&gt;</span>FAQ<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">'/contact'</span><span class="nt">&gt;</span>CONTACT<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">'buttons'</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">'cart'</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">'/cart'</span><span class="nt">&gt;</span>0<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">'signin'</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">'/login'</span><span class="nt">&gt;</span>sign in<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+
+<p>以及它对应的Less样式代码</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nt">div</span><span class="nc">.nav-bar</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">1024px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">185px</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0px</span> <span class="nb">auto</span><span class="p">;</span>       
+
+    <span class="err">a.logo</span> <span class="err">{</span>
+        <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">179px</span><span class="p">;</span>
+        <span class="nl">height</span><span class="p">:</span> <span class="m">143px</span><span class="p">;</span>
+        <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url('../images/logo.png')</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">ul</span><span class="nc">.menu</span> <span class="p">{</span>
+        <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+        <span class="nl">margin-left</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="err">li{</span>
+            <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">128px</span><span class="p">;</span>
+            <span class="nl">height</span><span class="p">:</span> <span class="m">110px</span><span class="p">;</span>
+            <span class="nl">border-left</span><span class="p">:</span> <span class="no">black</span> <span class="m">1px</span> <span class="nb">dotted</span><span class="p">;</span>
+            <span class="err">a</span> <span class="err">{</span>
+                <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+                <span class="nl">color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+
+    <span class="nt">ul</span><span class="nc">.buttons</span> <span class="p">{</span>
+        <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+        <span class="nl">margin-left</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+        <span class="err">li</span> <span class="err">{</span>
+            <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">107px</span><span class="p">;</span>
+            <span class="nl">height</span><span class="p">:</span> <span class="m">46px</span><span class="p">;</span>
+            <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+            <span class="err">a</span> <span class="err">{</span>
+                <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+                <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="err">}</span>
+        <span class="nt">li</span><span class="nc">.signin</span> <span class="p">{</span>
+            <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url('../images/nav-signin-bg.png')</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">li</span><span class="nc">.cart</span> <span class="p">{</span>
+            <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url('../images/nav-cart-bg.png')</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<p>html元素与样式间的对应关系非常清晰明了。即使你依然使用原生的css，我也建议你将css文件用less缩进方式来写，对于整体的可读性会有非常大的帮助。</p>
+
+<p>再来谈谈less的mixin，它解决了css另一个根本性的问题，也就是css class难以复用的问题。以著名的twitter的bootstrap css库为例 ，如果在我的网站中一个登录按钮要复用bootstrap中按钮的样式，我在html需要这样写</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">'signin-btn btn btn-large btn-primary'</span><span class="nt">&gt;</span>Sign In<span class="nt">&lt;/button&gt;</span>
+</code></pre></div>
+
+<p>btn, btn-large, btn-primary都是bootstrap中的样式，分别定义的按钮的基本样式，大小和颜色。sigin-btn的class是定义在我的网站样式表里的，用来描术这个按钮相对周围元素的margin及其他属性。可以想象，为了做到css复用，网站的html的各个元素都需要被赋予许多个class。更本质的问题是这使得表现层的细节注入到了内容层(html)的结构中。这里我还没有提到class无法参数化的问题，在css中如果要定义一个可复用的圆角class，就需要对于不同大小的圆角分别定义。同样的元素当使用html + less来开发应该这样写</p>
+
+<p>html代码:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">'signin-btn'</span><span class="nt">&gt;</span>Sign In<span class="nt">&lt;/button&gt;</span>
+</code></pre></div>
+
+<p>less代码:</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.signin-btn</span> <span class="p">{</span>
+	<span class="err">.btn;</span>
+	<span class="err">.btn-primary;</span>
+	<span class="err">.btn-large;</span>
+	<span class="nl">margin-left</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>表现层的所有细节全部被封装在less样式表中，使得html代码非常的简洁清晰。</p>
+
+<p>css语言在设计之初存在很多缺陷，但如同javascript一样，由于web浏览器的兼容性问题，在可见的未来都不可能有所改变。less语言修补了css最根本的一些问题，而且非常轻量，我觉得完全可以在所有的项目中使用，百利而无一害。说到这里，很容易联想到javascript和coffeescript之间的关系，但对coffeescript做评价要难许多，以后再和大家分享。</p>
+
+</article>
+
+
+
+
+  <div class="py2 post-footer">
+  <div class="wechat-caption">
+      关注我的微信公众号
+  </div>
+  <img src="/images/wechat-yecomment.jpg" alt="微信公众号" class="wechat" />
+
+  <div class="bdsharebuttonbox">
+      <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+      <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      <a href="#" class="fa fa-twitter bds_twitter" data-cmd="twi" title="分享到Twitter"></a>
+  </div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'yejianye';
+    var disqus_identifier = '/2012/10/06/why-using-lesscss';
+    var disqus_title      = '为什么应该在Web开发中使用LessCSS';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <p>停顿十秒钟，思考沉淀</p>
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

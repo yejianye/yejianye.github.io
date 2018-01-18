@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Python – 管道式的函数调用 &#8211; 叶剑烨的个人注释</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="停顿十秒钟，思考沉淀">
+    <meta name="author" content="叶剑烨">
+    <meta name="keywords" content="">
+    <link rel="canonical" href="http://localhost:4000/2012/12/04/python-pipeline/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for 叶剑烨的个人注释" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?201801181822" type="text/css">
+
+    <!-- Fonts -->
+    
+      <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+    
+
+    <!-- Verifications -->
+    
+
+    
+      <meta name="baidu-site-verification" content="bOzpMmOb88" />
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Python – 管道式的函数调用">
+    <meta property="og:description" content="停顿十秒钟，思考沉淀">
+    <meta property="og:url" content="http://localhost:4000/2012/12/04/python-pipeline/">
+    <meta property="og:site_name" content="叶剑烨的个人注释">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+    <meta name="twitter:title" content="Python – 管道式的函数调用" />
+    <meta name="twitter:description" content="停顿十秒钟，思考沉淀" />
+    <meta name="twitter:url" content="http://localhost:4000/2012/12/04/python-pipeline/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+    
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?a328f152ad53a33a042999efdd3de235";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</head>
+
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://localhost:4000" class="site-title">叶剑烨的个人注释</a>
+      <nav class="site-nav">
+        <a href="/">文章</a>
+<a href="/about/">关于我</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Python – 管道式的函数调用</h1>
+  <span class="post-meta">Dec 4, 2012</span><br>
+  
+  <span class="post-meta small">
+      
+      阅读时间 2 分钟
+      
+  </span>
+</div>
+
+<article class="post-content">
+  <p>在编程中，常常碰到需要对数据做一系列的变换。在Python中，最常见写法有两种，一种是使用List Comprehension，另一种是用<code class="highlighter-rouge">map</code>和<code class="highlighter-rouge">filter</code>。我们今天就从<code class="highlighter-rouge">map</code>和<code class="highlighter-rouge">filter</code>讲起。</p>
+
+<p>map/filter方式</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">transform1</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">transform2</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">cmp</span><span class="o">=</span><span class="n">comparator</span><span class="p">)</span>
+</code></pre></div>
+
+<p>当然从效率和内存空间上考虑，我们应该使用<code class="highlighter-rouge">itertools</code>，</p>
+
+<p>itertools方式</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">imap</span><span class="p">,</span> <span class="n">ifilter</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">ifilter</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">imap</span><span class="p">(</span><span class="n">transform1</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">imap</span><span class="p">(</span><span class="n">transform2</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">cmp</span><span class="o">=</span><span class="n">comparator</span><span class="p">)</span>
+</code></pre></div>
+
+<p>这样的写法没什么问题，但是不够简洁。我们也可以将几个函数调用写在一起</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">imap</span><span class="p">,</span> <span class="n">ifiler</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">transform2</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="n">transform1</span><span class="p">,</span> <span class="nb">filter</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">data</span><span class="p">))))</span>
+</code></pre></div>
+
+<p>上述的写法很明显有可读性问题。对*unix熟悉的朋友一定对shell中的管道(pipe)并不陌生，这是一种非常自然的处理数据的方式，如同一个产品在流水线上的加工。假设我们可以用shell来写这段代码，应该写成这样</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">data</span> <span class="o">|</span>
+  <span class="nb">filter</span> <span class="n">cond</span> <span class="o">|</span>
+  <span class="nb">map</span> <span class="n">transform1</span> <span class="o">|</span>
+  <span class="nb">map</span> <span class="n">transform2</span> <span class="o">|</span>
+  <span class="nb">sorted</span> <span class="n">comparator</span>
+</code></pre></div>
+
+<p>Ok, 那在python中该如何实现类似的写法呢。我有一个自己使用的小模块pipe，代码非常的简单。</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">imap</span><span class="p">,</span> <span class="n">ifilter</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="k">def</span> <span class="nf">pipe</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="n">transforms</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">transforms</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">def</span> <span class="nf">pmap</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="n">imap</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">pfilter</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="n">ifilter</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">psort</span><span class="p">(</span><span class="nb">cmp</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="nb">sorted</span><span class="p">,</span> <span class="nb">cmp</span><span class="o">=</span><span class="nb">cmp</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
+</code></pre></div>
+
+<p>使用pipe模块，之前的代码可以写成</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pipe</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pipe</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+    <span class="n">pfilter</span><span class="p">(</span><span class="n">cond</span><span class="p">),</span>
+    <span class="n">pmap</span><span class="p">(</span><span class="n">transform1</span><span class="p">),</span>
+    <span class="n">pmap</span><span class="p">(</span><span class="n">transform2</span><span class="p">),</span>
+    <span class="n">psort</span><span class="p">(</span><span class="nb">cmp</span><span class="o">=</span><span class="n">comparator</span><span class="p">))</span>
+</code></pre></div>
+
+<p>是不是简洁明了呢?</p>
+
+<p>在pipe模块中，用到了<code class="highlighter-rouge">functools.partial</code>，它实现在functional programming中最基本的一个函数变换curly，将一个多参数的函数中一部分参数固定，形成一个单参数的函数。在我们这里，<code class="highlighter-rouge">imap</code>本来需要<code class="highlighter-rouge">(func, iterable)</code>两个参数，<code class="highlighter-rouge">partial(imap, func)</code>就生成了一个只需要<code class="highlighter-rouge">(iterable)</code>的单参函数，其效果等同于<code class="highlighter-rouge">lambda iterable: imap(func, iterable)</code>。</p>
+
+</article>
+
+
+
+
+  <div class="py2 post-footer">
+  <div class="wechat-caption">
+      关注我的微信公众号
+  </div>
+  <img src="/images/wechat-yecomment.jpg" alt="微信公众号" class="wechat" />
+
+  <div class="bdsharebuttonbox">
+      <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+      <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      <a href="#" class="fa fa-twitter bds_twitter" data-cmd="twi" title="分享到Twitter"></a>
+  </div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</div>
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'yejianye';
+    var disqus_identifier = '/2012/12/04/python-pipeline';
+    var disqus_title      = 'Python – 管道式的函数调用';
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <p>停顿十秒钟，思考沉淀</p>
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
