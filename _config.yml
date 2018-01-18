@@ -68,3 +68,4 @@ sass:
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
+  - jekyll-org
