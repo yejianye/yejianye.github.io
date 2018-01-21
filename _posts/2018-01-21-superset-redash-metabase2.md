@@ -3,13 +3,7 @@ layout: post
 title:  "数据可视化的开源方案: Superset vs Redash vs Metabase (二)"
 ---
 
-在[上篇](/2017/12/31/superset-redash-metabase1/)结尾处我提到“如果现在让我重新选择，我会使用哪个可视化工具？”我的答案是 Redash，原因主要不是功能层面，而是技术层面。本篇就从
-
-- 项目的关注度与活跃度
-- 项目的技术架构
-- 源代码的规模与质量
-
-这三个方面来比较一下 Superset，Redash 与 Metabase。
+在[上篇](/2017/12/31/superset-redash-metabase1/)结尾处我提到“如果现在让我重新选择，我会使用哪个可视化工具？”我的答案是 Redash，原因主要不是功能层面，而是技术层面。本篇就从**项目关注度与活跃度，项目的技术架构，源代码的规模与质量**，这三个方面来比较一下 Superset，Redash 与 Metabase。
 
 关注度与活跃度
 ============
