@@ -24,7 +24,7 @@ ajaxify_contact_form: false
 
 # Disqus post comments
 # (leave blank to disable Disqus)
-disqus_shortname: yejianye
+disqus_shortname: 
 
 # Social icons
 github_username: yejianye
@@ -68,4 +68,3 @@ sass:
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
-  - jekyll-org
