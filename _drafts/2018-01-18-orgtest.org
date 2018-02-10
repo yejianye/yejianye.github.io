@@ -1,5 +1,0 @@
-#+TITLE: Jekyll and Org together
-#+LAYOUT: post
-
-* Section One
-Hello Orgmode
