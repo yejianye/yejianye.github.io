@@ -43,7 +43,7 @@ title:  全栈工程师修炼手册
 - 前端的MVC结构在后端一样适用。
 - 当你理解了 Java 的 Annotation 以后，再看 Python 的 Decorator 就会觉得非常熟悉（尽管两者的实现方式完全不同）
 - 当编译语言用类型推断（Type Inference）去除类型声明的同时，脚本语言却在用类型提示（Type Hint）添加类型声明。
-- 不可变（Immutable）的思想始于函数式编程，但可以用于运维（Immutable Infrastructure)，也可以用于大数据管理（Functional Data Engineering)。
+- 不可变（Immutable）的思想始于函数式编程，但可以用于运维（[Immutable Infrastructure](https://martinfowler.com/bliki/ImmutableServer.html))，也可以用于大数据管理（[Functional Data Engineering](https://medium.com/@maximebeauchemin/functional-data-engineering-a-modern-paradigm-for-batch-data-processing-2327ec32c42a))。
 - 运维的核心是对各类服务器数据的监控与报警，同样的理念也可以用于产品与运营数据。
 
 技术之间的联系，有些是显而易见的，有些需要你沉淀思考。真正的全栈工程师可以用一个技术领域的思想，去解决另一个技术领域的问题。再举一个我公司的例子，在学习用 Ansible 做运维时，发现它的 playbook 不是用脚本语言而是用 YAML 来写的，这让我意识到原来 YAML 不仅可以用来描述数据，也可以用来描述逻辑关系。这个思想后来被用在我们很多的项目中，比如在设计数据产品的报表时，各种指标的计算，包括指标之间的依赖与派生关系都是直接在 YAML 中定义的，主体程序不涉及任何业务逻辑，仅仅是解析与执行这些 YAML 文件。
@@ -76,7 +76,7 @@ Python 也是个全能型语言，如果之后要做自动化运维，大数据�
 
 学 SQL 前期是为了研发与上线时的数据库查询与管理，后期是为了数据分析与商业智能。即使目前各数 NoSQL 百花齐放，但传统的关系型数据库，如 MySQL 或是 PostgreSQL，势头依然强劲 。而在大数据端，各类的数据仓库与数据计算框架都会提供类 SQL 的接口。在较小的公司里，开发人员还经常兼做数据分析师。所以我认为熟练掌握 SQL 是对全栈工程师一项基本要求。
 
-除了这些编程语言外，另一部分就是了解运维的基础知识，包括 Linux命令行，Docker，以及各类常用的基础服务与数据库，如 Nginx，MySQL，Redis，MongoDB等。
+除了这些编程语言外，另一部分就是了解运维的基础知识，包括 Linux 命令行，Docker，以及各类常用的基础服务与数据库，如 Nginx，MySQL，Redis，MongoDB 等。
 
 有了这些技术基础之后，你对于一个移动应用的系统全貌，就有了大致的了解。可以再根据公司实际的业务情况，选择进一步学习的内容。
 
