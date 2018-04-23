@@ -11,7 +11,7 @@ title:  如何成为一名合格的面试官？
 -----------
 查理∙芒格有句名言“仅仅通过努力避免犯下常见的错误，我们就将大多数非常有才华和勤奋的人甩在身后”，所以我们先聊聊面试官们最容易犯的几个错误。
 
-面试里最糟的情况是，你与候选人聊了一个小时，当你走出会议室时，却无法对面试结果下一个定论。**出现这种情况的根本原因是你的问题没有一套评价原则。**这在叙述性问题或是开放式问题中特别突出，“请介绍一下你之前的工作经历”，随后候选人洋洋洒洒说了10分钟，你听得晕晕乎乎。寻思半晌后，说了声“好的，下一个问题是...” 如果你对这种局面不陌生的话，那就该好好反省了。对于面试中的每一个问题，你都要事先想好，回答中出现哪几点该加分，哪几点该减分。别问自己难以下判断的问题，这是在给你自己找麻烦。
+面试里最糟的情况是，你与候选人聊了一个小时，当你走出会议室时，却无法对面试结果下一个定论。**出现这种情况的根本原因是你的问题没有一套评价原则。**这在叙述性问题或是开放式问题中特别突出，“请介绍一下你之前的工作经历”，随后候选人洋洋洒洒说了 10 分钟，你听得晕晕乎乎。寻思半晌后，说了声“好的，下一个问题是...” 如果你对这种局面不陌生的话，那就该好好反省了。对于面试中的每一个问题，你都要事先想好，回答中出现哪几点该加分，哪几点该减分。别问自己难以下判断的问题，这是在给你自己找麻烦。
 
 上面说的情形，很少出现在专业问题上，当你问“Android 中一个 Activity 的生命周期是怎样的？”，我想你在评判答案方面不会有任何困难。但这往往会使面试官掉进另一个大坑，**只重视专业经验，而忽略基本素质**。在技术飞速发展的今天，相比经验而言，我们或许更该看重一个候选人是否聪明好学。这点在应届生招聘中，尤为重要。有些技术面全程都是专业题，我觉得是有欠考虑的。换个角度想，最优秀的人才可能同时具备出色的专业能力与过人的基本素质，但这样的人往往早已身居要职，即使有一小部分在市场上流动，也一定被众多公司盯上，这样的人你有多大把握招入麾下？如果最优秀的人才可遇不可求，接下来在中规中据的有经验者，与素质出众的新人中，你会选择哪一个呢？保时捷的前 CEO Peter Schutz 曾说过“Hire character, train skill”，这也是在 Glow 公司一直奉行的招聘原则。
 
@@ -59,6 +59,7 @@ title:  如何成为一名合格的面试官？
 
 最后给大家推荐几篇扩展阅读，欢迎留言讨论。
 
-- [Hire a Top Performer Every Time with These Interview Questions](http://firstround.com/review/hire-a-top-performer-every-time-with-these-interview-questions/)
-- [The Guerrilla Guide to Interviewing (version 3.0)](https://www.joelonsoftware.com/2006/10/25/the-guerrilla-guide-to-interviewing-version-30/)
-- [How to Hire Engineers - Jocelyn Goldfein](https://jocelyngoldfein.com/how-to-hire-engineers-step-0-what-to-look-for-85ae44bf0a1c)（由 5 篇文章组成的一个系列）
+- [Hire a Top Performer Every Time with These Interview Questions](http://firstround.com/review/hire-a-top-performer-every-time-with-these-interview-questions/)（一家猎头公司 CEO 的面试心得）
+- [The Guerrilla Guide to Interviewing - Joel Spolsky](https://www.joelonsoftware.com/2006/10/25/the-guerrilla-guide-to-interviewing-version-30/)（Stack Overflow 创始人写的面试指南）
+- [How to Hire Engineers - Jocelyn Goldfein](https://jocelyngoldfein.com/how-to-hire-engineers-step-0-what-to-look-for-85ae44bf0a1c)（前 Facebook 工程师经理写的系列长文，由 5 篇文章组成）
+
