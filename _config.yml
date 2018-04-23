@@ -4,7 +4,7 @@ email:       yejianye@gmail.com
 author:      叶剑烨
 description: "停顿十秒钟，思考沉淀"
 baseurl:     ""
-url:         "http://www.yejianye.com"
+url:         "https://www.yejianye.com"
 date_format: "%b %-d, %Y"
 
 # Google services
